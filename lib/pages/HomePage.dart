@@ -15,28 +15,52 @@ class HomePage extends StatelessWidget {
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            MenuButton(
-                buttonColor: Colors.blueAccent,
-                buttonText: "Texto 1",
-                onTap: () {}),
-            MenuButton(
-                buttonColor: Colors.red, buttonText: "Texto 2", onTap: () {}),
-            MenuButton(
-                buttonColor: Colors.blue, buttonText: "Texto 3", onTap: () {}),
-            MenuButton(
-                buttonColor: Colors.redAccent,
-                buttonText: "Texto 4",
-                onTap: () {}),
+            SizedBox(
+              height: 50.0,
+            ),
+            Image.network(
+              'https://cdn-icons-png.flaticon.com/512/3000/3000895.png',
+              height: 120,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                MenuButton(
+                    buttonColor: Colors.red,
+                    buttonText: "Classes",
+                    onTap: () {}),
+                MenuButton(
+                    buttonColor: Colors.red, buttonText: "Raças", onTap: () {}),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                MenuButton(
+                    buttonColor: Colors.red,
+                    buttonText: "Magias",
+                    onTap: () {}),
+                MenuButton(
+                    buttonColor: Colors.red,
+                    buttonText: "Talentos",
+                    onTap: () {}),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                MenuButton(
+                    buttonColor: Colors.red,
+                    buttonText: "Características",
+                    onTap: () {}),
+                MenuButton(
+                    buttonColor: Colors.red, buttonText: "Itens", onTap: () {}),
+              ],
+            ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => Navigator.pushNamed(context, ListPage.routeName),
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

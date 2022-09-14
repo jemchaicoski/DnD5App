@@ -15,15 +15,17 @@ class MenuButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 20),
+      margin: const EdgeInsets.all(16),
+      height: 120,
+      width: 150,
       decoration: BoxDecoration(
-          color: buttonColor, borderRadius: BorderRadius.circular(10)),
+          color: buttonColor, borderRadius: BorderRadius.circular(25)),
       child: Material(
         color: Colors.transparent,
         child: InkWell(
           onTap: onTap,
           child: Container(
-            padding: const EdgeInsets.all(20),
+            padding: const EdgeInsets.all(42),
             child: Center(
               child: Text(
                 buttonText,
