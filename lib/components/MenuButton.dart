@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 class MenuButton extends StatelessWidget {
   MenuButton(
       {required this.buttonText,
-      required this.buttonColor,
-      required this.onTap,
-      Key? key})
+        required this.buttonColor,
+        required this.onTap,
+        Key? key})
       : super(key: key);
 
   final String buttonText;
