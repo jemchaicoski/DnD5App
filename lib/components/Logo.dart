@@ -5,12 +5,12 @@ class Logo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(top: 120, bottom: 25),
+    return const Padding(
+      padding: EdgeInsets.only(top: 0, bottom: 25),
       child: CircleAvatar(
         backgroundImage: AssetImage('assets/icons/dragon.png'),
-        backgroundColor: Colors.orange,
-        radius: 120,
+        backgroundColor: Color.fromRGBO(237, 182, 16, 1),
+        radius: 100,
       ),
     );
   }
