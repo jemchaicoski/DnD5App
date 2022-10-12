@@ -1,4 +1,5 @@
 import 'package:dnd5_app/pages/HomePage.dart';
+import 'package:dnd5_app/pages/QueryScreen.dart';
 import 'package:dnd5_app/routes.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
-      home: const HomePage(),
+      home: QueryScreen(),
       routes: routes,
     );
   }

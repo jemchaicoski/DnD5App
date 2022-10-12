@@ -9,8 +9,10 @@ class LoadingScreen extends StatelessWidget {
     return Column(
       children: const [
         Logo(),
-        Text("Kobolt Ancião",
-            style: TextStyle(fontSize: 40, fontFamily: "Georgia")),
+        Text(
+          "Kobolt Ancião",
+          style: TextStyle(fontSize: 40, fontFamily: "Georgia"),
+        ),
       ],
     );
   }
