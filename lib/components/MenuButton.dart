@@ -16,7 +16,7 @@ class MenuButton extends StatelessWidget {
   Widget build(BuildContext context) {
     const contentStyle = TextStyle(
       color: Colors.white,
-      fontSize: 16,
+      fontSize: 18,
       fontWeight: FontWeight.w500,
     );
     return Container(

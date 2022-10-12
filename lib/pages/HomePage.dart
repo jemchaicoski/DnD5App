@@ -1,6 +1,7 @@
 import 'package:dnd5_app/Utils/customIcons.dart';
 import 'package:dnd5_app/components/Logo.dart';
 import 'package:dnd5_app/components/MenuButton.dart';
+import 'package:dnd5_app/pages/QueryScreen.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -60,9 +61,27 @@ class _HomePageState extends State<HomePage> {
                 MenuButton(
                     buttonColor: Colors.red,
                     buttonText: "Classes",
-                    onTap: () {}),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => QueryScreen(
+                              "Classes"
+                          ),
+                        ),
+                      );
+                    }),
                 MenuButton(
-                    buttonColor: Colors.red, buttonText: "Raças", onTap: () {}),
+                    buttonColor: Colors.red, buttonText: "Raças", onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => QueryScreen(
+                          "Raças"
+                      ),
+                    ),
+                  );
+                }),
               ],
             ),
             Row(
@@ -71,11 +90,30 @@ class _HomePageState extends State<HomePage> {
                 MenuButton(
                     buttonColor: Colors.red,
                     buttonText: "Magias",
-                    onTap: () {}),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => QueryScreen(
+                              "Magias"
+                          ),
+                        ),
+                      );
+                    }),
                 MenuButton(
-                    buttonColor: Colors.red,
-                    buttonText: "Talentos",
-                    onTap: () {}),
+                  buttonColor: Colors.red,
+                  buttonText: "Talentos",
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => QueryScreen(
+                          "Talentos"
+                        ),
+                      ),
+                    );
+                  },
+                ),
               ],
             ),
             Row(
@@ -84,9 +122,27 @@ class _HomePageState extends State<HomePage> {
                 MenuButton(
                     buttonColor: Colors.red,
                     buttonText: "Características",
-                    onTap: () {}),
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => QueryScreen(
+                              "Características"
+                          ),
+                        ),
+                      );
+                    }),
                 MenuButton(
-                    buttonColor: Colors.red, buttonText: "Itens", onTap: () {}),
+                    buttonColor: Colors.red, buttonText: "Itens", onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => QueryScreen(
+                          "Itens"
+                      ),
+                    ),
+                  );
+                }),
               ],
             ),
             const Spacer(),
