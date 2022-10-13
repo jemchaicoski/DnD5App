@@ -1,4 +1,5 @@
 import 'package:dnd5_app/pages/HomePage.dart';
+import 'package:dnd5_app/pages/QueryScreen.dart';
 import 'package:dnd5_app/routes.dart';
 import 'package:flutter/material.dart';
 
