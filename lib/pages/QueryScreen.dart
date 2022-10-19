@@ -1,7 +1,9 @@
+import 'package:dnd5_app/models/Feature.dart';
 import 'package:dnd5_app/services/DndService.dart';
+import 'package:dnd5_app/utils/queryNameEnum.dart';
 import 'package:flutter/material.dart';
 
-class QueryScreen extends StatefulWidget{
+class QueryScreen extends StatefulWidget {
   final String title;
   const QueryScreen(this.title);
 
@@ -14,14 +16,32 @@ class _QueryScreenState extends State<QueryScreen> {
 
   @override
   void initState() {
-    _getThingsOnStartup().then((value){
-      print('Async done');
-    });
+    _getThingsOnStartup().then((value) {});
     super.initState();
   }
 
   Future _getThingsOnStartup() async {
-    await dndService.getAllSpells();
+    switch (widget.title) {
+      case "Classes":
+        await dndService.getList(QueryName.classes.name);
+        break;
+      case "Raças":
+        await dndService.getList(QueryName.races.name);
+        break;
+      case "Magias":
+        await dndService.getList(QueryName.spells.name);
+        break;
+      case "Talentos":
+        final result = Feature.fromJson(await dndService.getOne(QueryName.features.name, "improved-critical"));
+        print(result.index);
+        break;
+      case "Características":
+        await dndService.getList(QueryName.traits.name);
+        break;
+      case "Equipamentos":
+        await dndService.getList(QueryName.equipment.name);
+        break;
+    }
   }
 
   @override
@@ -34,7 +54,7 @@ class _QueryScreenState extends State<QueryScreen> {
         itemCount: 10,
         itemBuilder: (context, index) {
           return ListTile(
-            title: Text("List Item $index"),
+            title: Text(""),
           );
         },
       ),
