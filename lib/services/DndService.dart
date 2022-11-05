@@ -9,8 +9,9 @@ class DndService {
   getList(String listKey) async {
     try {
       Response response = await dio.get(defaultString + listKey);
-      //print(response.data);
-      return jsonDecode(response.data);
+      Map<String, dynamic> map = jsonDecode(response.toString());
+      print(map["results"][0]["name"]);
+      return ;
     } catch (e) {
       print(e);
     }

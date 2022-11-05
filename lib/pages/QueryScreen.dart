@@ -32,8 +32,7 @@ class _QueryScreenState extends State<QueryScreen> {
         await dndService.getList(QueryName.spells.name);
         break;
       case "Talentos":
-        final result = Feature.fromJson(await dndService.getOne(QueryName.features.name, "improved-critical"));
-        print(result.index);
+        await dndService.getList(QueryName.features.name);
         break;
       case "Características":
         await dndService.getList(QueryName.traits.name);

@@ -11,14 +11,13 @@ class Feature {
   Feature.fromJson(Map<String, dynamic> json) {
     index = json['index'];
     name = json['name'];
-    desc = json['desc'];
     level = json['level'];
     desc = json['desc'].cast<String>();
     url = json['url'];
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = Map<String, dynamic>();
     data['index'] = this.index;
     data['name'] = this.name;
     data['desc'] = this.desc;
