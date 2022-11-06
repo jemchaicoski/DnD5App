@@ -12,7 +12,7 @@ class Feature {
     index = json['index'];
     name = json['name'];
     level = json['level'];
-    desc = json['desc'].cast<String>();
+    desc = json['desc'];
     url = json['url'];
   }
 
@@ -23,5 +23,10 @@ class Feature {
     data['desc'] = this.desc;
     data['url'] = this.url;
     return data;
+  }
+
+  @override
+  String toString() {
+    return 'Feature{index: $index, name: $name, desc: $desc, level: $level, url: $url}';
   }
 }

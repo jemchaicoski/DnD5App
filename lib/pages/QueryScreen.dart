@@ -13,6 +13,7 @@ class QueryScreen extends StatefulWidget {
 
 class _QueryScreenState extends State<QueryScreen> {
   DndService dndService = DndService();
+  List nameList = [];
 
   @override
   void initState() {
@@ -32,7 +33,8 @@ class _QueryScreenState extends State<QueryScreen> {
         await dndService.getList(QueryName.spells.name);
         break;
       case "Talentos":
-        await dndService.getList(QueryName.features.name);
+        var queryResult = await dndService.getList(QueryName.features.name);
+        nameList = queryResult.map((className) => Feature.fromJson(className)).toList();
         break;
       case "Características":
         await dndService.getList(QueryName.traits.name);
