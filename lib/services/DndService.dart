@@ -6,7 +6,7 @@ class DndService {
   final Dio dio = Dio();
   final String defaultString = "https://www.dnd5eapi.co/api/";
 
-  Future getList(String listKey) async {
+  Future<List<dynamic>> getList(String listKey) async {
     try {
       Response response = await dio.get(defaultString + listKey);
       Map<String, dynamic> map = jsonDecode(response.toString());
@@ -15,6 +15,7 @@ class DndService {
       return map["results"];
     } catch (e) {
       print(e);
+      throw Error();
     }
   }
 

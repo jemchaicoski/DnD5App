@@ -13,7 +13,7 @@ class QueryScreen extends StatefulWidget {
 
 class _QueryScreenState extends State<QueryScreen> {
   DndService dndService = DndService();
-  List nameList = [];
+  late Future<List<dynamic>> nameList;
 
   @override
   void initState() {
@@ -34,7 +34,8 @@ class _QueryScreenState extends State<QueryScreen> {
         break;
       case "Talentos":
         var queryResult = await dndService.getList(QueryName.features.name);
-        nameList = queryResult.map((className) => Feature.fromJson(className)).toList();
+        nameList = queryResult.map((className) => Feature.fromJson(className))
+            as Future<List>;
         break;
       case "Características":
         await dndService.getList(QueryName.traits.name);
@@ -54,8 +55,25 @@ class _QueryScreenState extends State<QueryScreen> {
       body: ListView.builder(
         itemCount: 10,
         itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(""),
+          return Center(
+            child: FutureBuilder<List>(
+              future: nameList,
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return ListView.builder(
+                    itemBuilder: (context, index) {
+                      return ListTile(
+                        title: Text(snapshot.data![index].name),
+                      );
+                    },
+                    itemCount: snapshot.data!.length,
+                  );
+                } else {
+                  print("error");
+                  return Text("Falha");
+                }
+              },
+            ),
           );
         },
       ),
