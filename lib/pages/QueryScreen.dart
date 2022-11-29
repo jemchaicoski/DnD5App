@@ -1,49 +1,44 @@
-import 'package:dnd5_app/models/Feature.dart';
-import 'package:dnd5_app/services/DndService.dart';
-import 'package:dnd5_app/utils/queryNameEnum.dart';
 import 'package:flutter/material.dart';
+import 'dart:async';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class QueryScreen extends StatefulWidget {
   final String title;
   const QueryScreen(this.title);
 
+
   @override
-  State<QueryScreen> createState() => _QueryScreenState();
+  _QueryScreenState createState() => new _QueryScreenState();
 }
 
 class _QueryScreenState extends State<QueryScreen> {
-  DndService dndService = DndService();
-  late Future<List<dynamic>> nameList;
+  late Future<List<dynamic>> course;
 
-  @override
-  void initState() {
-    _getThingsOnStartup().then((value) {});
+  void initState()
+  {
     super.initState();
+    course = _getFeatures();
   }
 
-  Future _getThingsOnStartup() async {
-    switch (widget.title) {
-      case "Classes":
-        await dndService.getList(QueryName.classes.name);
-        break;
-      case "Raças":
-        await dndService.getList(QueryName.races.name);
-        break;
-      case "Magias":
-        await dndService.getList(QueryName.spells.name);
-        break;
-      case "Talentos":
-        var queryResult = await dndService.getList(QueryName.features.name);
-        nameList = queryResult.map((className) => Feature.fromJson(className))
-            as Future<List>;
-        break;
-      case "Características":
-        await dndService.getList(QueryName.traits.name);
-        break;
-      case "Equipamentos":
-        await dndService.getList(QueryName.equipment.name);
-        break;
+  Future<List<Generic>> _getFeatures() async {
+    print("entrou");
+    var data = await http.get(Uri.parse("https://www.dnd5eapi.co/api/features"));
+    var jsonData = json.decode(data.body);
+
+    List<Generic> users = [];
+
+    for(var u in jsonData){
+      Generic generic = Generic(u["index"]);
+
+      users.add(generic);
+
     }
+
+    print(users.length);
+
+    return users;
+
   }
 
   @override
@@ -52,31 +47,66 @@ class _QueryScreenState extends State<QueryScreen> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: ListView.builder(
-        itemCount: 10,
-        itemBuilder: (context, index) {
-          return Center(
-            child: FutureBuilder<List>(
-              future: nameList,
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  return ListView.builder(
-                    itemBuilder: (context, index) {
-                      return ListTile(
-                        title: Text(snapshot.data![index].name),
+      body: Container(
+        child: FutureBuilder(
+          future: course,
+          builder: (BuildContext context, AsyncSnapshot snapshot){
+            print(snapshot.data);
+            if(snapshot.data == null){
+              return Container(
+                  child: Center(
+                      child: Text("Loading...")
+                  )
+              );
+            } else {
+              return ListView.builder(
+                itemCount: snapshot.data.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return ListTile(
+                    leading: CircleAvatar(
+                      backgroundImage: NetworkImage(
+                          snapshot.data[index].picture
+                      ),
+                    ),
+                    title: Text(snapshot.data[index].name),
+                    subtitle: Text(snapshot.data[index].email),
+                    onTap: (){
+
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => DetailPage(snapshot.data[index]))
                       );
                     },
-                    itemCount: snapshot.data!.length,
                   );
-                } else {
-                  print("error");
-                  return Text("Falha");
-                }
-              },
-            ),
-          );
-        },
+                },
+              );
+            }
+          },
+        ),
       ),
     );
   }
+}
+
+class DetailPage extends StatelessWidget {
+
+  final Generic generic;
+
+  DetailPage(this.generic);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text(generic.index.toString()),
+        )
+    );
+  }
+}
+
+
+class Generic {
+  final int index;
+
+  Generic(this.index);
+
 }
