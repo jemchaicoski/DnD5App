@@ -65,23 +65,21 @@ class _HomePageState extends State<HomePage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => QueryScreen(
-                              "Classes"
-                          ),
+                          builder: (context) => QueryScreen("Classes"),
                         ),
                       );
                     }),
                 MenuButton(
-                    buttonColor: Colors.red, buttonText: "Raças", onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => QueryScreen(
-                          "Raças"
-                      ),
-                    ),
-                  );
-                }),
+                    buttonColor: Colors.red,
+                    buttonText: "Raças",
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => QueryScreen("Raças"),
+                        ),
+                      );
+                    }),
               ],
             ),
             Row(
@@ -94,9 +92,7 @@ class _HomePageState extends State<HomePage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => QueryScreen(
-                              "Magias"
-                          ),
+                          builder: (context) => QueryScreen("Magias"),
                         ),
                       );
                     }),
@@ -107,9 +103,7 @@ class _HomePageState extends State<HomePage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => QueryScreen(
-                          "Talentos"
-                        ),
+                        builder: (context) => QueryScreen("Talentos"),
                       ),
                     );
                   },
@@ -126,23 +120,21 @@ class _HomePageState extends State<HomePage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => QueryScreen(
-                              "Características"
-                          ),
+                          builder: (context) => QueryScreen("Características"),
                         ),
                       );
                     }),
                 MenuButton(
-                    buttonColor: Colors.red, buttonText: "Itens", onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => QueryScreen(
-                          "Itens"
-                      ),
-                    ),
-                  );
-                }),
+                    buttonColor: Colors.red,
+                    buttonText: "Equipamentos",
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => QueryScreen("Equipamentos"),
+                        ),
+                      );
+                    }),
               ],
             ),
             const Spacer(),
