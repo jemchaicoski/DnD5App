@@ -1,15 +1,13 @@
 class Feature {
-  String? index;
   String? name;
-  List<String>? desc;
+  String? desc;
   int? level;
   String? url;
 
-  Feature(this.index, this.name, this.desc, this.level, this.url);
+  Feature(this.name, this.desc, this.level, this.url);
 
 
   Feature.fromJson(Map<String, dynamic> json) {
-    index = json['index'];
     name = json['name'];
     level = json['level'];
     desc = json['desc'];
@@ -18,7 +16,6 @@ class Feature {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = Map<String, dynamic>();
-    data['index'] = this.index;
     data['name'] = this.name;
     data['desc'] = this.desc;
     data['url'] = this.url;
@@ -27,6 +24,6 @@ class Feature {
 
   @override
   String toString() {
-    return 'Feature{index: $index, name: $name, desc: $desc, level: $level, url: $url}';
+    return 'Feature{name: $name, desc: $desc, level: $level, url: $url}';
   }
 }

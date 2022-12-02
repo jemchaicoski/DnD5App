@@ -1,28 +1,29 @@
 import 'dart:convert';
-import 'package:dio/dio.dart';
+import 'package:http/http.dart' as http;
+import '../models/Generic.dart';
 
 class DndService {
-  final Dio dio = Dio();
   final String defaultString = "https://www.dnd5eapi.co/api/";
 
- getList(String listKey) async {
-    try {
-      Response response = await dio.get(defaultString + listKey);
-      Map<String, dynamic> map = jsonDecode(response.toString());
-      //print(map["results"][0]["name"]);
-      //print(map["results"][0]);
-      return map["results"];
-    } catch (e) {
-      print(e);
-      throw Error();
+  getListOfNames(String queryName) async {
+    var data = await http.get(Uri.parse("https://www.dnd5eapi.co/api/" + queryName));
+    var jsonData = json.decode(data.body);
+
+    List<Generic> listOfGeneric = [];
+
+    for(var u in jsonData["results"]){
+      Generic generic = Generic(u["name"]);
+      listOfGeneric.add(generic);
     }
+
+    return listOfGeneric;
   }
 
   getOne(String listKey, String itemKey) async {
     try {
-      Response response = await dio.get('$defaultString$listKey/$itemKey');
-      print(response.data);
-      return response.data;
+      var response = await http.get(Uri.parse('$defaultString$listKey/$itemKey'));
+      print(response);
+      return response;
     } catch (e) {
       print(e);
     }

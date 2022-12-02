@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
-import 'package:http/http.dart' as http;
-import 'dart:convert';
+import '../models/Generic.dart';
+import '../services/DndService.dart';
+import '../utils/queryNameEnum.dart';
 
 class QueryScreen extends StatefulWidget {
   final String title;
@@ -13,32 +14,38 @@ class QueryScreen extends StatefulWidget {
 }
 
 class _QueryScreenState extends State<QueryScreen> {
+  DndService dndService = DndService();
   late Future<List<dynamic>> course;
 
   void initState()
   {
     super.initState();
-    course = _getFeatures();
+    course = _getThingsOnStartup();
   }
 
-  Future<List<Generic>> _getFeatures() async {
-    print("entrou");
-    var data = await http.get(Uri.parse("https://www.dnd5eapi.co/api/features"));
-    var jsonData = json.decode(data.body);
-
-    List<Generic> users = [];
-
-    for(var u in jsonData){
-      Generic generic = Generic(u["index"]);
-
-      users.add(generic);
-
+  Future<List<dynamic>> _getThingsOnStartup() async {
+    var result;
+    switch (widget.title) {
+      case "Classes":
+       result = await dndService.getListOfNames(QueryName.classes.name);
+        break;
+      case "Raças":
+        result = await dndService.getListOfNames(QueryName.races.name);
+        break;
+      case "Magias":
+        result = await dndService.getListOfNames(QueryName.spells.name);
+        break;
+      case "Talentos":
+        result = await dndService.getListOfNames(QueryName.features.name);
+        break;
+      case "Características":
+        result = await dndService.getListOfNames(QueryName.traits.name);
+        break;
+      case "Equipamentos":
+        result = await dndService.getListOfNames(QueryName.equipment.name);
+        break;
     }
-
-    print(users.length);
-
-    return users;
-
+    return result;
   }
 
   @override
@@ -63,13 +70,7 @@ class _QueryScreenState extends State<QueryScreen> {
                 itemCount: snapshot.data.length,
                 itemBuilder: (BuildContext context, int index) {
                   return ListTile(
-                    leading: CircleAvatar(
-                      backgroundImage: NetworkImage(
-                          snapshot.data[index].picture
-                      ),
-                    ),
                     title: Text(snapshot.data[index].name),
-                    subtitle: Text(snapshot.data[index].email),
                     onTap: (){
 
                       Navigator.push(context,
@@ -97,16 +98,8 @@ class DetailPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text(generic.index.toString()),
+          title: Text(generic.name.toString()),
         )
     );
   }
-}
-
-
-class Generic {
-  final int index;
-
-  Generic(this.index);
-
 }
