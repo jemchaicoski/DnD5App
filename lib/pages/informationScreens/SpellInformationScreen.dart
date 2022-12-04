@@ -1,0 +1,43 @@
+import 'package:dnd5_app/models/Spell.dart';
+import 'package:dnd5_app/services/DndService.dart';
+import 'package:dnd5_app/utils/queryNameEnum.dart';
+import 'package:flutter/material.dart';
+
+class SpellInformationScreen extends StatefulWidget {
+  String spellIndex;
+
+  SpellInformationScreen(this.spellIndex);
+
+  @override
+  State<SpellInformationScreen> createState() => _SpellInformationScreenState();
+}
+
+class _SpellInformationScreenState extends State<SpellInformationScreen> {
+  DndService dndService = DndService();
+  late Future<Spell> spell;
+
+  void initState() {
+    super.initState();
+    spell = dndService.getOneSpell(widget.spellIndex);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: FutureBuilder(
+        future: spell,
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          print(snapshot.data);
+          if (snapshot.data == null) {
+            return Scaffold(
+              appBar: AppBar(),
+              body: Container(child: const Center(child: Text("Loading..."),),),
+            );
+          } else {
+            return Scaffold(appBar: AppBar(title: Text(snapshot.data.name),),);
+          }
+        },
+      ),
+    );
+  }
+}
