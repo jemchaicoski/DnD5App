@@ -1,3 +1,4 @@
+import 'package:dnd5_app/components/InformationBox.dart';
 import 'package:dnd5_app/models/Spell.dart';
 import 'package:dnd5_app/services/DndService.dart';
 import 'package:dnd5_app/utils/queryNameEnum.dart';
@@ -31,10 +32,29 @@ class _SpellInformationScreenState extends State<SpellInformationScreen> {
           if (snapshot.data == null) {
             return Scaffold(
               appBar: AppBar(),
-              body: Container(child: const Center(child: Text("Loading..."),),),
+              body: Container(
+                child: const Center(
+                  child: Text("Loading..."),
+                ),
+              ),
             );
           } else {
-            return Scaffold(appBar: AppBar(title: Text(snapshot.data.name),),);
+            return Scaffold(
+              appBar: AppBar(
+                title: Text(snapshot.data.name),
+              ),
+              body: InformationBox([snapshot.data.name,
+                snapshot.data.school + " de " + snapshot.data.level.toString() + "° nível",
+                "Conjuradores: " + snapshot.data.getClasses(),
+                "Tempo de conjuração: " + snapshot.data.castingTime,
+                "Alcanse: " + snapshot.data.range,
+                "Componentes: " + snapshot.data.getComponents(),
+                "Duração: " + snapshot.data.duration,
+                snapshot.data.desc,
+                snapshot.data.getHigherLevel()
+              ]
+              ),
+            );
           }
         },
       ),

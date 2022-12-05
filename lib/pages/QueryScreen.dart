@@ -1,7 +1,6 @@
 import 'package:dnd5_app/pages/informationScreens/SpellInformationScreen.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
-import '../models/Generic.dart';
 import '../services/DndService.dart';
 import '../utils/queryNameEnum.dart';
 

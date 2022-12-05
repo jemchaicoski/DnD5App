@@ -46,4 +46,37 @@ class Spell {
         '\nclasses: $classes, '
         '}';
   }
+
+
+
+  String getClasses(){
+    String classesString = "";
+    for(var c in classes!){
+      classesString += c + " ";
+    }
+    return classesString;
+  }
+
+  String getComponents(){
+    String componentsString = "";
+    for(var c in components!){
+      componentsString += c + " ";
+    }
+    return componentsString;
+  }
+
+  String getHigherLevel(){
+    String higherLevelString = "";
+    for(var c in higherLevel!){
+      higherLevelString += c + " ";
+    }
+
+    if(higherLevelString != ""){
+      return "Em níveis superiores: " + higherLevelString;
+    }
+
+    return "";
+  }
 }
+
+
