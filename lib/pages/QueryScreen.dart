@@ -1,4 +1,4 @@
-import 'package:dnd5_app/pages/informationScreens/SpellInformationScreen.dart';
+import 'package:dnd5_app/pages/SpellInformationScreen.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import '../services/DndService.dart';
@@ -62,39 +62,36 @@ class _QueryScreenState extends State<QueryScreen> {
         title: Text(widget.title),
         backgroundColor: Colors.transparent,
       ),
-      body: Container(
-        child: FutureBuilder(
-          future: course,
-          builder: (BuildContext context, AsyncSnapshot snapshot) {
-            //print(snapshot.data);
-            if (snapshot.data == null) {
-              return Container(child: const Center(child: Text("Loading...")));
-            } else {
-              return ListView.builder(
-                itemCount: snapshot.data.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return ListTile(
-                    title: Text(
-                      snapshot.data[index].name,
-                      style: new TextStyle(
-                        fontSize: 15.0,
-                        fontFamily: 'Roboto',
-                        color: new Color(0xFF212121),
-                      ),
+      body: FutureBuilder(
+        future: course,
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          if (snapshot.data == null) {
+            return const Center(child: Text("Loading..."));
+          } else {
+            return ListView.builder(
+              itemCount: snapshot.data.length,
+              itemBuilder: (BuildContext context, int index) {
+                return ListTile(
+                  title: Text(
+                    snapshot.data[index].name,
+                    style: const TextStyle(
+                      fontSize: 15.0,
+                      fontFamily: 'Roboto',
+                      color: Color(0xFF212121),
                     ),
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  _getInfoScreen(snapshot.data[index].index)));
-                    },
-                  );
-                },
-              );
-            }
-          },
-        ),
+                  ),
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                _getInfoScreen(snapshot.data[index].index)));
+                  },
+                );
+              },
+            );
+          }
+        },
       ),
     );
   }

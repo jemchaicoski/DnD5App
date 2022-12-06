@@ -1,6 +1,6 @@
 class Spell {
   String? name;
-  String? desc;
+  String desc;
   List<String>? higherLevel;
   String? range;
   List<String>? components;
@@ -15,7 +15,7 @@ class Spell {
 
   Spell({
     this.name,
-    this.desc,
+    required this.desc,
     this.higherLevel,
     this.range,
     this.components,

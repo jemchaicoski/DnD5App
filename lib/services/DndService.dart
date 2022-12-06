@@ -3,91 +3,84 @@ import 'package:dnd5_app/models/Spell.dart';
 import 'package:dnd5_app/utils/SpellSchools.dart';
 import 'package:http/http.dart' as http;
 import '../models/Generic.dart';
+import 'package:translator/translator.dart';
 
 class DndService {
+  GoogleTranslator translator = new GoogleTranslator();
   final String defaultString = "https://www.dnd5eapi.co/api/spells/";
 
   getListOfNamesFilteredBySpellType(String queryFilter) async {
-    var data =
-        await http.get(Uri.parse(defaultString));
+    var data = await http.get(Uri.parse(defaultString));
     var jsonData = json.decode(data.body);
 
     List<Generic> listOfGeneric = [];
 
-    if(queryFilter == "abjuration"){
-      print(queryFilter);
+    if (queryFilter == "abjuration") {
       for (var u in jsonData["results"]) {
-        if(Abjuration.list.contains(u["name"])){
+        if (Abjuration.list.contains(u["name"])) {
           Generic generic = Generic(u["name"], u["index"]);
           listOfGeneric.add(generic);
         }
       }
     }
 
-    if(queryFilter == "transmutation"){
-      print(queryFilter);
+    if (queryFilter == "transmutation") {
       for (var u in jsonData["results"]) {
-        if(Transmutation.list.contains(u["name"])){
+        if (Transmutation.list.contains(u["name"])) {
           Generic generic = Generic(u["name"], u["index"]);
           listOfGeneric.add(generic);
         }
       }
     }
 
-    if(queryFilter == "conjuration"){
-      print(queryFilter);
+    if (queryFilter == "conjuration") {
       for (var u in jsonData["results"]) {
-        if(Conjuration.list.contains(u["name"])){
+        if (Conjuration.list.contains(u["name"])) {
           Generic generic = Generic(u["name"], u["index"]);
           listOfGeneric.add(generic);
         }
       }
     }
 
-    if(queryFilter == "divination"){
-      print(queryFilter);
+    if (queryFilter == "divination") {
       for (var u in jsonData["results"]) {
-        if(Divination.list.contains(u["name"])){
+        if (Divination.list.contains(u["name"])) {
           Generic generic = Generic(u["name"], u["index"]);
           listOfGeneric.add(generic);
         }
       }
     }
 
-    if(queryFilter == "enchantment"){
-      print(queryFilter);
+    if (queryFilter == "enchantment") {
       for (var u in jsonData["results"]) {
-        if(Enchantment.list.contains(u["name"])){
+        if (Enchantment.list.contains(u["name"])) {
           Generic generic = Generic(u["name"], u["index"]);
           listOfGeneric.add(generic);
         }
       }
     }
 
-    if(queryFilter == "evocation"){
-      print(queryFilter);
+    if (queryFilter == "evocation") {
       for (var u in jsonData["results"]) {
-        if(Evocation.list.contains(u["name"])){
+        if (Evocation.list.contains(u["name"])) {
           Generic generic = Generic(u["name"], u["index"]);
           listOfGeneric.add(generic);
         }
       }
     }
 
-    if(queryFilter == "necromancy"){
-      print(queryFilter);
+    if (queryFilter == "necromancy") {
       for (var u in jsonData["results"]) {
-        if(Necromancy.list.contains(u["name"])){
+        if (Necromancy.list.contains(u["name"])) {
           Generic generic = Generic(u["name"], u["index"]);
           listOfGeneric.add(generic);
         }
       }
     }
 
-    if(queryFilter == "ilusion"){
-      print(queryFilter);
+    if (queryFilter == "ilusion") {
       for (var u in jsonData["results"]) {
-        if(Ilusion.list.contains(u["name"])){
+        if (Ilusion.list.contains(u["name"])) {
           Generic generic = Generic(u["name"], u["index"]);
           listOfGeneric.add(generic);
         }
@@ -118,20 +111,19 @@ class DndService {
     }
 
     Spell spell = Spell(
-      name: jsonData["name"],
-      desc: jsonData["desc"][0],
-      higherLevel: higherLevelList,
-      components: components,
-      material: jsonData["material"],
-      range: jsonData["range"],
-      concentration: jsonData["concentration"],
-      duration: jsonData["duration"],
-      ritual: jsonData["ritual"],
-      castingTime: jsonData["casting_time"],
-      level: jsonData["level"],
-      school: jsonData["school"]["name"],
-      classes:  classes
-    );
+        name: jsonData["name"],
+        desc: jsonData["desc"][0],
+        higherLevel: higherLevelList,
+        components: components,
+        material: jsonData["material"],
+        range: jsonData["range"],
+        concentration: jsonData["concentration"],
+        duration: jsonData["duration"],
+        ritual: jsonData["ritual"],
+        castingTime: jsonData["casting_time"],
+        level: jsonData["level"],
+        school: jsonData["school"]["name"],
+        classes: classes);
 
     //print(spell.toString());
 

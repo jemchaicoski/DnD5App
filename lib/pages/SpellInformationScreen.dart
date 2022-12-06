@@ -27,11 +27,10 @@ class _SpellInformationScreenState extends State<SpellInformationScreen> {
       child: FutureBuilder(
         future: spell,
         builder: (BuildContext context, AsyncSnapshot snapshot) {
-          print(snapshot.data);
+          //print(snapshot.data);
           if (snapshot.data == null) {
             return Scaffold(
               appBar: AppBar(
-                title: Text(widget.spellIndex),
                 backgroundColor: Colors.transparent,
               ),
               body: Container(
