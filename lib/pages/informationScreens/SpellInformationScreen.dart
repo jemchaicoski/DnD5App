@@ -1,7 +1,6 @@
 import 'package:dnd5_app/components/InformationBox.dart';
 import 'package:dnd5_app/models/Spell.dart';
 import 'package:dnd5_app/services/DndService.dart';
-import 'package:dnd5_app/utils/queryNameEnum.dart';
 import 'package:flutter/material.dart';
 
 class SpellInformationScreen extends StatefulWidget {

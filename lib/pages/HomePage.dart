@@ -70,7 +70,7 @@ class _HomePageState extends State<HomePage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => QueryScreen("Classes"),
+                        builder: (context) => QueryScreen("Conjuração"),
                       ),
                     );
                   }),
@@ -84,7 +84,7 @@ class _HomePageState extends State<HomePage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => QueryScreen("Raças"),
+                        builder: (context) => QueryScreen("Necromancia"),
                       ),
                     );
                   }),
@@ -100,7 +100,7 @@ class _HomePageState extends State<HomePage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => QueryScreen("Magias"),
+                        builder: (context) => QueryScreen("Evocação"),
                       ),
                     );
                   }),
@@ -114,7 +114,7 @@ class _HomePageState extends State<HomePage> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => QueryScreen("Talentos"),
+                      builder: (context) => QueryScreen("Abjuração"),
                     ),
                   );
                 },
@@ -131,7 +131,7 @@ class _HomePageState extends State<HomePage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => QueryScreen("Características"),
+                        builder: (context) => QueryScreen("Transmutação"),
                       ),
                     );
                   }),
@@ -145,7 +145,7 @@ class _HomePageState extends State<HomePage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => QueryScreen("Equipamentos"),
+                        builder: (context) => QueryScreen("Adivinhação"),
                       ),
                     );
                   }),
@@ -156,12 +156,12 @@ class _HomePageState extends State<HomePage> {
             children: [
               MenuButton(
                   buttonColor: Colors.red,
-                  buttonText: "Encantamento ",
+                  buttonText: "Encantamento",
                   onTap: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => QueryScreen("Características"),
+                        builder: (context) => QueryScreen("Encantamento"),
                       ),
                     );
                   }),
@@ -175,7 +175,7 @@ class _HomePageState extends State<HomePage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => QueryScreen("Equipamentos"),
+                        builder: (context) => QueryScreen("Ilusão"),
                       ),
                     );
                   }),

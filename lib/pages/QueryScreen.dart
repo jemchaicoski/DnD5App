@@ -2,7 +2,6 @@ import 'package:dnd5_app/pages/informationScreens/SpellInformationScreen.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import '../services/DndService.dart';
-import '../utils/queryNameEnum.dart';
 
 class QueryScreen extends StatefulWidget {
   final String title;
@@ -24,49 +23,36 @@ class _QueryScreenState extends State<QueryScreen> {
   Future<List<dynamic>> _getThingsOnStartup() async {
     var result;
     switch (widget.title) {
-      case "Classes":
-        result = await dndService.getListOfNames(QueryName.classes.name);
+      case "Conjuração":
+        result = await dndService.getListOfNamesFilteredBySpellType("conjuration");
         break;
-      case "Raças":
-        result = await dndService.getListOfNames(QueryName.races.name);
+      case "Necromancia":
+        result = await dndService.getListOfNamesFilteredBySpellType("necromancy");
         break;
-      case "Magias":
-        result = await dndService.getListOfNames(QueryName.spells.name);
+      case "Evocação":
+        result = await dndService.getListOfNamesFilteredBySpellType("evocation");
         break;
-      case "Talentos":
-        result = await dndService.getListOfNames(QueryName.features.name);
+      case "Abjuração":
+        result = await dndService.getListOfNamesFilteredBySpellType("abjuration");
         break;
-      case "Características":
-        result = await dndService.getListOfNames(QueryName.traits.name);
+      case "Transmutação":
+        result = await dndService.getListOfNamesFilteredBySpellType("transmutation");
         break;
-      case "Equipamentos":
-        result = await dndService.getListOfNames(QueryName.equipment.name);
+      case "Adivinhação":
+        result = await dndService.getListOfNamesFilteredBySpellType("divination");
+        break;
+      case "Encantamento":
+        result = await dndService.getListOfNamesFilteredBySpellType("enchantment");
+        break;
+      case "Ilusão":
+        result = await dndService.getListOfNamesFilteredBySpellType("ilusion");
         break;
     }
     return result;
   }
 
   _getInfoScreen(String index) {
-    switch (widget.title) {
-      case "Classes":
-        // result = await dndService.getListOfNames(QueryName.classes.name);
-        break;
-      case "Raças":
-        //result = await dndService.getListOfNames(QueryName.races.name);
-        break;
-      case "Magias":
-        return SpellInformationScreen(index);
-        break;
-      case "Talentos":
-        //result = await dndService.getListOfNames(QueryName.features.name);
-        break;
-      case "Características":
-        //result = await dndService.getListOfNames(QueryName.traits.name);
-        break;
-      case "Equipamentos":
-        //result = await dndService.getListOfNames(QueryName.equipment.name);
-        break;
-    }
+    return SpellInformationScreen(index);
   }
 
   @override

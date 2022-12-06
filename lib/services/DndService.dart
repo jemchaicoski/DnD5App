@@ -1,28 +1,104 @@
 import 'dart:convert';
 import 'package:dnd5_app/models/Spell.dart';
+import 'package:dnd5_app/utils/SpellSchools.dart';
 import 'package:http/http.dart' as http;
 import '../models/Generic.dart';
 
 class DndService {
-  final String defaultString = "https://www.dnd5eapi.co/api/";
+  final String defaultString = "https://www.dnd5eapi.co/api/spells/";
 
-  getListOfNames(String queryName) async {
+  getListOfNamesFilteredBySpellType(String queryFilter) async {
     var data =
-        await http.get(Uri.parse("https://www.dnd5eapi.co/api/" + queryName));
+        await http.get(Uri.parse(defaultString));
     var jsonData = json.decode(data.body);
 
     List<Generic> listOfGeneric = [];
 
-    for (var u in jsonData["results"]) {
-      Generic generic = Generic(u["name"], u["index"]);
-      listOfGeneric.add(generic);
+    if(queryFilter == "abjuration"){
+      print(queryFilter);
+      for (var u in jsonData["results"]) {
+        if(Abjuration.list.contains(u["name"])){
+          Generic generic = Generic(u["name"], u["index"]);
+          listOfGeneric.add(generic);
+        }
+      }
+    }
+
+    if(queryFilter == "transmutation"){
+      print(queryFilter);
+      for (var u in jsonData["results"]) {
+        if(Transmutation.list.contains(u["name"])){
+          Generic generic = Generic(u["name"], u["index"]);
+          listOfGeneric.add(generic);
+        }
+      }
+    }
+
+    if(queryFilter == "conjuration"){
+      print(queryFilter);
+      for (var u in jsonData["results"]) {
+        if(Conjuration.list.contains(u["name"])){
+          Generic generic = Generic(u["name"], u["index"]);
+          listOfGeneric.add(generic);
+        }
+      }
+    }
+
+    if(queryFilter == "divination"){
+      print(queryFilter);
+      for (var u in jsonData["results"]) {
+        if(Divination.list.contains(u["name"])){
+          Generic generic = Generic(u["name"], u["index"]);
+          listOfGeneric.add(generic);
+        }
+      }
+    }
+
+    if(queryFilter == "enchantment"){
+      print(queryFilter);
+      for (var u in jsonData["results"]) {
+        if(Enchantment.list.contains(u["name"])){
+          Generic generic = Generic(u["name"], u["index"]);
+          listOfGeneric.add(generic);
+        }
+      }
+    }
+
+    if(queryFilter == "evocation"){
+      print(queryFilter);
+      for (var u in jsonData["results"]) {
+        if(Evocation.list.contains(u["name"])){
+          Generic generic = Generic(u["name"], u["index"]);
+          listOfGeneric.add(generic);
+        }
+      }
+    }
+
+    if(queryFilter == "necromancy"){
+      print(queryFilter);
+      for (var u in jsonData["results"]) {
+        if(Necromancy.list.contains(u["name"])){
+          Generic generic = Generic(u["name"], u["index"]);
+          listOfGeneric.add(generic);
+        }
+      }
+    }
+
+    if(queryFilter == "ilusion"){
+      print(queryFilter);
+      for (var u in jsonData["results"]) {
+        if(Ilusion.list.contains(u["name"])){
+          Generic generic = Generic(u["name"], u["index"]);
+          listOfGeneric.add(generic);
+        }
+      }
     }
 
     return listOfGeneric;
   }
 
   Future<Spell> getOneSpell(String itemKey) async {
-    var data = await http.get(Uri.parse(defaultString + "spells/" + itemKey));
+    var data = await http.get(Uri.parse(defaultString + itemKey));
     var jsonData = json.decode(data.body);
 
     List<String> classes = [];
