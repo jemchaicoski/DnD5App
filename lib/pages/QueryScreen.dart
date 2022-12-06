@@ -74,6 +74,7 @@ class _QueryScreenState extends State<QueryScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+        backgroundColor: Colors.transparent,
       ),
       body: Container(
         child: FutureBuilder(
@@ -87,7 +88,14 @@ class _QueryScreenState extends State<QueryScreen> {
                 itemCount: snapshot.data.length,
                 itemBuilder: (BuildContext context, int index) {
                   return ListTile(
-                    title: Text(snapshot.data[index].name),
+                    title: Text(
+                      snapshot.data[index].name,
+                      style: new TextStyle(
+                        fontSize: 15.0,
+                        fontFamily: 'Roboto',
+                        color: new Color(0xFF212121),
+                      ),
+                    ),
                     onTap: () {
                       Navigator.push(
                           context,

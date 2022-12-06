@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
       title: 'Kobold Ancião',
       theme: ThemeData(
         primarySwatch: Colors.red,
+        fontFamily: "Roboto",
       ),
       home: const HomePage(),
       routes: routes,

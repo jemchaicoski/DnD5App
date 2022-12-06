@@ -31,7 +31,10 @@ class _SpellInformationScreenState extends State<SpellInformationScreen> {
           print(snapshot.data);
           if (snapshot.data == null) {
             return Scaffold(
-              appBar: AppBar(),
+              appBar: AppBar(
+                title: Text(widget.spellIndex),
+                backgroundColor: Colors.transparent,
+              ),
               body: Container(
                 child: const Center(
                   child: Text("Loading..."),
@@ -40,20 +43,31 @@ class _SpellInformationScreenState extends State<SpellInformationScreen> {
             );
           } else {
             return Scaffold(
-              appBar: AppBar(
-                title: Text(snapshot.data.name),
-              ),
-              body: InformationBox([snapshot.data.name,
-                snapshot.data.school + " de " + snapshot.data.level.toString() + "° nível",
-                "Conjuradores: " + snapshot.data.getClasses(),
-                "Tempo de conjuração: " + snapshot.data.castingTime,
-                "Alcanse: " + snapshot.data.range,
-                "Componentes: " + snapshot.data.getComponents(),
-                "Duração: " + snapshot.data.duration,
-                snapshot.data.desc,
-                snapshot.data.getHigherLevel()
-              ]
-              ),
+                appBar: AppBar(
+                  backgroundColor: Colors.transparent,//remover
+                ),
+              body: Column(
+                children: [
+                  InformationBox([snapshot.data.name,], true),
+                  const Divider(
+                    height: 10,
+                    thickness: 2,
+                    indent: 20,
+                    endIndent: 20,
+                    color: Colors.grey,
+                  ),
+                  InformationBox([snapshot.data.getTypeAndLevel(),
+                    "Conjuradores: " + snapshot.data.getClasses(),
+                    "Tempo de conjuração: " + snapshot.data.castingTime,
+                    "Alcanse: " + snapshot.data.range,
+                    "Componentes: " + snapshot.data.getComponents(),
+                    "Duração: " + snapshot.data.duration,
+                    snapshot.data.desc,
+                    snapshot.data.getHigherLevel()
+                  ], false
+                  ),
+                ],
+              )
             );
           }
         },

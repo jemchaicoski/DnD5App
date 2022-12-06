@@ -65,6 +65,15 @@ class Spell {
     return componentsString;
   }
 
+  String getTypeAndLevel(){
+    if(level == 0){
+      return school! + " de " + level.toString() + " nível";
+    }
+
+    return school! + " de " + level.toString() + "° nível";
+  }
+
+
   String getHigherLevel(){
     String higherLevelString = "";
     for(var c in higherLevel!){

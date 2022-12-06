@@ -15,131 +15,173 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final String title = "Kobold Ancião";
   bool click = true;
+
+  static const double spaceBetweenButtons = 15.0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          children: <Widget>[
-            const SizedBox(
-              height: 50.0,
-            ),
-            Row(
-              children: [
-                const Spacer(),
-                IconButton(
-                  padding: EdgeInsets.only(right: 20),
-                  onPressed: () {
-                    setState(() {
-                      click = !click;
-                    });
-                  },
-                  icon: Icon(
-                    click ? Icons.sunny : CustomIcons.moon,
+      body: Column(
+        children: <Widget>[
+          const SizedBox(
+            height: 25.0,
+          ),
+          Row(
+            children: [
+              const SizedBox(
+                width: 100,
+              ),
+              Column(
+                children: [
+                  const Logo(),
+                  Text(
+                    title,
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w900,
+                      fontSize: 35,
+                    ),
                   ),
-                  alignment: Alignment.topRight,
-                  iconSize: 40,
+                ],
+              ),
+              const SizedBox(
+                width: 20,
+              ),
+              IconButton(
+                padding: EdgeInsets.only(right: 20),
+                onPressed: () {
+                  setState(() {
+                    click = !click;
+                  });
+                },
+                icon: Icon(
+                  click ? Icons.sunny : CustomIcons.moon,
                 ),
-              ],
-            ),
-            Column(
-              children: [
-                const Logo(),
-                Text(
-                  title,
-                  style: const TextStyle(
-                    fontWeight: FontWeight.w900,
-                    fontSize: 35,
-                  ),
-                ),
-              ],
-            ),
-            const Spacer(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                MenuButton(
-                    buttonColor: Colors.red,
-                    buttonText: "Classes",
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => QueryScreen("Classes"),
-                        ),
-                      );
-                    }),
-                MenuButton(
-                    buttonColor: Colors.red,
-                    buttonText: "Raças",
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => QueryScreen("Raças"),
-                        ),
-                      );
-                    }),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                MenuButton(
-                    buttonColor: Colors.red,
-                    buttonText: "Magias",
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => QueryScreen("Magias"),
-                        ),
-                      );
-                    }),
-                MenuButton(
+                alignment: Alignment.bottomRight,
+                iconSize: 40,
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              MenuButton(
                   buttonColor: Colors.red,
-                  buttonText: "Talentos",
+                  buttonText: "Conjuração",
                   onTap: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => QueryScreen("Talentos"),
+                        builder: (context) => QueryScreen("Classes"),
                       ),
                     );
-                  },
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                MenuButton(
-                    buttonColor: Colors.red,
-                    buttonText: "Características",
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => QueryScreen("Características"),
-                        ),
-                      );
-                    }),
-                MenuButton(
-                    buttonColor: Colors.red,
-                    buttonText: "Equipamentos",
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => QueryScreen("Equipamentos"),
-                        ),
-                      );
-                    }),
-              ],
-            ),
-            const Spacer(),
-          ],
-        ),
+                  }),
+              const SizedBox(
+                width: spaceBetweenButtons,
+              ),
+              MenuButton(
+                  buttonColor: Colors.red,
+                  buttonText: "Necromancia",
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => QueryScreen("Raças"),
+                      ),
+                    );
+                  }),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              MenuButton(
+                  buttonColor: Colors.red,
+                  buttonText: "Evocação",
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => QueryScreen("Magias"),
+                      ),
+                    );
+                  }),
+              const SizedBox(
+                width: spaceBetweenButtons,
+              ),
+              MenuButton(
+                buttonColor: Colors.red,
+                buttonText: "Abjuração",
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => QueryScreen("Talentos"),
+                    ),
+                  );
+                },
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              MenuButton(
+                  buttonColor: Colors.red,
+                  buttonText: "Transmutação",
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => QueryScreen("Características"),
+                      ),
+                    );
+                  }),
+              const SizedBox(
+                width: spaceBetweenButtons,
+              ),
+              MenuButton(
+                  buttonColor: Colors.red,
+                  buttonText: "Adivinhação",
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => QueryScreen("Equipamentos"),
+                      ),
+                    );
+                  }),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              MenuButton(
+                  buttonColor: Colors.red,
+                  buttonText: "Encantamento ",
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => QueryScreen("Características"),
+                      ),
+                    );
+                  }),
+              const SizedBox(
+                width: spaceBetweenButtons,
+              ),
+              MenuButton(
+                  buttonColor: Colors.red,
+                  buttonText: "Ilusão",
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => QueryScreen("Equipamentos"),
+                      ),
+                    );
+                  }),
+            ],
+          ),
+        ],
       ),
     );
   }
