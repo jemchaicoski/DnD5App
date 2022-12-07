@@ -46,7 +46,7 @@ class _SpellInformationScreenState extends State<SpellInformationScreen> {
                 ),
               body: Column(
                 children: [
-                  InformationBox([snapshot.data.name,], true),
+                  InformationBox([snapshot.data.getNameTranslated(),], true),
                   const Divider(
                     height: 10,
                     thickness: 2,

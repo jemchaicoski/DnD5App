@@ -136,9 +136,6 @@ class DndService {
       spell.higherLevel![0] = translationHigherLevel.text;
     }
 
-    var translationName = await translator.translate(spell.name!, from: 'en', to: 'pt');
-    spell.name = translationName.text;
-
     return spell;
   }
 }

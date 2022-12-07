@@ -1,3 +1,5 @@
+import 'package:dnd5_app/utils/SpellSchools.dart';
+
 class Spell {
   String? name;
   String desc;
@@ -48,6 +50,30 @@ class Spell {
   }
 
 
+  String getNameTranslated(){
+    String translated = "";
+    print(school);
+    switch (school) {
+      case "Conjuration":
+        break;
+      case "Necromancy":
+        break;
+      case "Evocation":
+        break;
+      case "Abjuration":
+        break;
+      case "Transmutation":
+        break;
+      case "Divination":
+        break;
+      case "Enchantment":
+        break;
+      case "Illusion":
+        translated = Ilusion.map[name]!;
+        break;
+    }
+  return translated;
+  }
 
   String getClasses(){
     String classesString = "";
