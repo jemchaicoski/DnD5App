@@ -6,7 +6,6 @@ class Feature {
 
   Feature(this.name, this.desc, this.level, this.url);
 
-
   Feature.fromJson(Map<String, dynamic> json) {
     name = json['name'];
     level = json['level'];

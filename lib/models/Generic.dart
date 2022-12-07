@@ -1,11 +1,11 @@
 class Generic {
   String? name;
+  String? index;
 
-  Generic(this.name);
-
+  Generic(this.name, this.index);
 
   @override
   String toString() {
-    return 'Feature{name: $name}';
+    return 'Generic{name: $name, index: $index}';
   }
 }

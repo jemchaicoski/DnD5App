@@ -21,7 +21,7 @@ class MenuButton extends StatelessWidget {
     );
     return Container(
       margin: const EdgeInsets.all(16),
-      height: 120,
+      height: 112,
       width: 150,
       decoration: BoxDecoration(
         color: buttonColor,
