@@ -81,10 +81,11 @@ class DndService {
     if (queryFilter == "ilusion") {
       for (var u in jsonData["results"]) {
         if (Ilusion.list.contains(u["name"])) {
-          Generic generic = Generic(u["name"], u["index"]);
+          Generic generic = Generic(Ilusion.map[u["name"]], u["index"]);
           listOfGeneric.add(generic);
         }
       }
+      listOfGeneric.sort((a, b) => a.name!.compareTo(b.name!));
     }
 
     return listOfGeneric;
