@@ -57,7 +57,7 @@ class _SpellInformationScreenState extends State<SpellInformationScreen> {
                   InformationBox([snapshot.data.getTypeAndLevel(),
                     "Conjuradores: " + snapshot.data.getClasses(),
                     "Tempo de conjuração: " + snapshot.data.castingTime,
-                    "Alcanse: " + snapshot.data.range,
+                    "Alcance: " + snapshot.data.range,
                     "Componentes: " + snapshot.data.getComponents(),
                     "Duração: " + snapshot.data.duration,
                     snapshot.data.desc,

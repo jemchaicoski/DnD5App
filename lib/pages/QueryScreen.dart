@@ -24,25 +24,32 @@ class _QueryScreenState extends State<QueryScreen> {
     var result;
     switch (widget.title) {
       case "Conjuração":
-        result = await dndService.getListOfNamesFilteredBySpellType("conjuration");
+        result =
+            await dndService.getListOfNamesFilteredBySpellType("conjuration");
         break;
       case "Necromancia":
-        result = await dndService.getListOfNamesFilteredBySpellType("necromancy");
+        result =
+            await dndService.getListOfNamesFilteredBySpellType("necromancy");
         break;
       case "Evocação":
-        result = await dndService.getListOfNamesFilteredBySpellType("evocation");
+        result =
+            await dndService.getListOfNamesFilteredBySpellType("evocation");
         break;
       case "Abjuração":
-        result = await dndService.getListOfNamesFilteredBySpellType("abjuration");
+        result =
+            await dndService.getListOfNamesFilteredBySpellType("abjuration");
         break;
       case "Transmutação":
-        result = await dndService.getListOfNamesFilteredBySpellType("transmutation");
+        result =
+            await dndService.getListOfNamesFilteredBySpellType("transmutation");
         break;
       case "Adivinhação":
-        result = await dndService.getListOfNamesFilteredBySpellType("divination");
+        result =
+            await dndService.getListOfNamesFilteredBySpellType("divination");
         break;
       case "Encantamento":
-        result = await dndService.getListOfNamesFilteredBySpellType("enchantment");
+        result =
+            await dndService.getListOfNamesFilteredBySpellType("enchantment");
         break;
       case "Ilusão":
         result = await dndService.getListOfNamesFilteredBySpellType("ilusion");

@@ -37,7 +37,7 @@ class _HomePageState extends State<HomePage> {
                     title,
                     style: const TextStyle(
                       fontWeight: FontWeight.w900,
-                      fontSize: 35,
+                      fontSize: 32,
                     ),
                   ),
                 ],

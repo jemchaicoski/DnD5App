@@ -16,7 +16,7 @@ class Spell {
   Spell({
     this.name,
     required this.desc,
-    this.higherLevel,
+    this.higherLevel = const [""],
     this.range,
     this.components,
     this.material,

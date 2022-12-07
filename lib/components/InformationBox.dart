@@ -45,7 +45,7 @@ Widget getTextWidgets(List<String> strings, bool isTitle) {
             strings[i],
             overflow: TextOverflow.visible,
             style: TextStyle(
-              fontSize: 18.0,
+              fontSize: 16.0,
               fontFamily: 'Roboto',
               color: Color(0xFF212121),
             ),

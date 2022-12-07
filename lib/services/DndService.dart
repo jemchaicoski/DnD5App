@@ -126,6 +126,17 @@ class DndService {
         classes: classes);
 
     //print(spell.toString());
+    
+    var translationDesc = await translator.translate(spell.desc, from: 'en', to: 'pt');
+    spell.desc = translationDesc.text;
+
+    if(spell.higherLevel!.isNotEmpty){
+      var translationHigherLevel = await translator.translate(spell.higherLevel![0], from: 'en', to: 'pt');
+      spell.higherLevel![0] = translationHigherLevel.text;
+    }
+
+    var translationName = await translator.translate(spell.name!, from: 'en', to: 'pt');
+    spell.name = translationName.text;
 
     return spell;
   }
