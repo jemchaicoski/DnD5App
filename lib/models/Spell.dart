@@ -1,3 +1,5 @@
+import 'package:dnd5_app/utils/Translation.dart';
+
 class Spell {
   String? name;
   String desc;
@@ -16,7 +18,7 @@ class Spell {
   Spell({
     this.name,
     required this.desc,
-    this.higherLevel,
+    this.higherLevel = const [""],
     this.range,
     this.components,
     this.material,
@@ -47,45 +49,77 @@ class Spell {
         '}';
   }
 
+  String getNameTranslated() {
+    String translated = "";
+    print(school);
+    switch (school) {
+      case "Conjuration":
+        translated = Conjuration.map[name]!;
+        break;
+      case "Necromancy":
+        translated = Necromancy.map[name]!;
+        break;
+      case "Evocation":
+        translated = Evocation.map[name]!;
+        break;
+      case "Abjuration":
+        translated = Abjuration.map[name]!;
+        break;
+      case "Transmutation":
+        translated = Transmutation.map[name]!;
+        break;
+      case "Divination":
+        translated = Divination.map[name]!;
+        break;
+      case "Enchantment":
+        translated = Enchantment.map[name]!;
+        break;
+      case "Illusion":
+        translated = Ilusion.map[name]!;
+        break;
+    }
+    return translated;
+  }
 
-
-  String getClasses(){
+  String getClassesTranslated() {
     String classesString = "";
-    for(var c in classes!){
-      classesString += c + " ";
+    for (var c in classes!) {
+      classesString += Classes.map[c]! + " ";
     }
     return classesString;
   }
 
-  String getComponents(){
+  String getRange(){
+    double number = double.parse(range!.replaceAll(RegExp("[a-zA-Z:\s]"), "").toString());
+    return (number / 3.281).round().toString() + " Metros";
+  }
+
+  String getComponents() {
     String componentsString = "";
-    for(var c in components!){
+    for (var c in components!) {
       componentsString += c + " ";
     }
     return componentsString;
   }
 
-  String getTypeAndLevel(){
-    if(level == 0){
-      return school! + " de " + level.toString() + " nível";
+  String getTypeAndLevel() {
+    if (level == 0) {
+      return SpellSchools.map[school!]! + " de " + level.toString() + " nível";
     }
 
-    return school! + " de " + level.toString() + "° nível";
+    return SpellSchools.map[school!]! + " de " + level.toString() + "° nível";
   }
 
-
-  String getHigherLevel(){
+  String getHigherLevel() {
     String higherLevelString = "";
-    for(var c in higherLevel!){
+    for (var c in higherLevel!) {
       higherLevelString += c + " ";
     }
 
-    if(higherLevelString != ""){
+    if (higherLevelString != "") {
       return "Em níveis superiores: " + higherLevelString;
     }
 
     return "";
   }
 }
-
-

@@ -46,7 +46,7 @@ class _SpellInformationScreenState extends State<SpellInformationScreen> {
                 ),
               body: Column(
                 children: [
-                  InformationBox([snapshot.data.name,], true),
+                  InformationBox([snapshot.data.getNameTranslated(),], true),
                   const Divider(
                     height: 10,
                     thickness: 2,
@@ -55,9 +55,9 @@ class _SpellInformationScreenState extends State<SpellInformationScreen> {
                     color: Colors.grey,
                   ),
                   InformationBox([snapshot.data.getTypeAndLevel(),
-                    "Conjuradores: " + snapshot.data.getClasses(),
+                    "Conjuradores: " + snapshot.data.getClassesTranslated(),
                     "Tempo de conjuração: " + snapshot.data.castingTime,
-                    "Alcanse: " + snapshot.data.range,
+                    "Alcance: " + snapshot.data.getRange(),
                     "Componentes: " + snapshot.data.getComponents(),
                     "Duração: " + snapshot.data.duration,
                     snapshot.data.desc,

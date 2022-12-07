@@ -19,15 +19,18 @@ Widget getTextWidgets(List<String> strings, bool isTitle) {
         width: 500,
         margin: EdgeInsets.all(8),
         padding: EdgeInsets.only(right: 13.0),
-        child: Text(
-          textAlign: TextAlign.justify,
-          strings[0],
-          overflow: TextOverflow.visible,
-          style: TextStyle(
-            fontSize: 28.0,
-            fontWeight: FontWeight.bold,
-            fontFamily: 'Roboto',
-            color: Color(0xFF212121),
+        child: FittedBox(
+          fit: BoxFit.fitWidth,
+          child: Text(
+            textAlign: TextAlign.justify,
+            strings[0],
+            overflow: TextOverflow.visible,
+            style: const TextStyle(
+              fontSize: 28.0,
+              fontWeight: FontWeight.bold,
+              fontFamily: 'Roboto',
+              color: Color(0xFF212121),
+            ),
           ),
         ),
       ),
@@ -38,14 +41,14 @@ Widget getTextWidgets(List<String> strings, bool isTitle) {
         Container(
           alignment: Alignment.center,
           width: 500,
-          margin: EdgeInsets.all(8),
-          padding: EdgeInsets.only(right: 13.0),
+          margin: const EdgeInsets.all(8),
+          padding: const EdgeInsets.only(right: 13.0),
           child: Text(
             textAlign: TextAlign.justify,
             strings[i],
             overflow: TextOverflow.visible,
-            style: TextStyle(
-              fontSize: 18.0,
+            style: const TextStyle(
+              fontSize: 15.0,
               fontFamily: 'Roboto',
               color: Color(0xFF212121),
             ),
@@ -54,7 +57,7 @@ Widget getTextWidgets(List<String> strings, bool isTitle) {
       );
     }
   }
-  return new Column(
+  return Column(
     children: list,
   );
 }
@@ -63,7 +66,7 @@ class _InformationBoxState extends State<InformationBox> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 20, left: 10, right: 10, bottom: 20),
+      margin: const EdgeInsets.only(top: 20, left: 10, right: 10, bottom: 20),
       decoration: BoxDecoration(
         color: CupertinoColors.lightBackgroundGray,
         boxShadow: [

@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import '../services/DndService.dart';
 
-class QueryScreen extends StatefulWidget {
+class SpellListScreen extends StatefulWidget {
   final String title;
-  const QueryScreen(this.title);
+  const SpellListScreen(this.title);
 
   @override
-  _QueryScreenState createState() => new _QueryScreenState();
+  _SpellListScreenState createState() => new _SpellListScreenState();
 }
 
-class _QueryScreenState extends State<QueryScreen> {
+class _SpellListScreenState extends State<SpellListScreen> {
   DndService dndService = DndService();
   late Future<List<dynamic>> course;
 
@@ -24,25 +24,32 @@ class _QueryScreenState extends State<QueryScreen> {
     var result;
     switch (widget.title) {
       case "Conjuração":
-        result = await dndService.getListOfNamesFilteredBySpellType("conjuration");
+        result =
+            await dndService.getListOfNamesFilteredBySpellType("conjuration");
         break;
       case "Necromancia":
-        result = await dndService.getListOfNamesFilteredBySpellType("necromancy");
+        result =
+            await dndService.getListOfNamesFilteredBySpellType("necromancy");
         break;
       case "Evocação":
-        result = await dndService.getListOfNamesFilteredBySpellType("evocation");
+        result =
+            await dndService.getListOfNamesFilteredBySpellType("evocation");
         break;
       case "Abjuração":
-        result = await dndService.getListOfNamesFilteredBySpellType("abjuration");
+        result =
+            await dndService.getListOfNamesFilteredBySpellType("abjuration");
         break;
       case "Transmutação":
-        result = await dndService.getListOfNamesFilteredBySpellType("transmutation");
+        result =
+            await dndService.getListOfNamesFilteredBySpellType("transmutation");
         break;
       case "Adivinhação":
-        result = await dndService.getListOfNamesFilteredBySpellType("divination");
+        result =
+            await dndService.getListOfNamesFilteredBySpellType("divination");
         break;
       case "Encantamento":
-        result = await dndService.getListOfNamesFilteredBySpellType("enchantment");
+        result =
+            await dndService.getListOfNamesFilteredBySpellType("enchantment");
         break;
       case "Ilusão":
         result = await dndService.getListOfNamesFilteredBySpellType("ilusion");
