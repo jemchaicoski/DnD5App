@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 import '../services/DndService.dart';
 
-class QueryScreen extends StatefulWidget {
+class SpellListScreen extends StatefulWidget {
   final String title;
-  const QueryScreen(this.title);
+  const SpellListScreen(this.title);
 
   @override
-  _QueryScreenState createState() => new _QueryScreenState();
+  _SpellListScreenState createState() => new _SpellListScreenState();
 }
 
-class _QueryScreenState extends State<QueryScreen> {
+class _SpellListScreenState extends State<SpellListScreen> {
   DndService dndService = DndService();
   late Future<List<dynamic>> course;
 

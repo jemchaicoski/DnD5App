@@ -1,7 +1,7 @@
 import 'package:dnd5_app/Utils/customIcons.dart';
 import 'package:dnd5_app/components/Logo.dart';
 import 'package:dnd5_app/components/MenuButton.dart';
-import 'package:dnd5_app/pages/QueryScreen.dart';
+import 'package:dnd5_app/pages/SpellListScreen.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -60,6 +60,9 @@ class _HomePageState extends State<HomePage> {
               ),
             ],
           ),
+          const SizedBox(
+            height: 25.0,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -70,7 +73,7 @@ class _HomePageState extends State<HomePage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => QueryScreen("Conjuração"),
+                        builder: (context) => SpellListScreen("Conjuração"),
                       ),
                     );
                   }),
@@ -84,7 +87,7 @@ class _HomePageState extends State<HomePage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => QueryScreen("Necromancia"),
+                        builder: (context) => SpellListScreen("Necromancia"),
                       ),
                     );
                   }),
@@ -100,7 +103,7 @@ class _HomePageState extends State<HomePage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => QueryScreen("Evocação"),
+                        builder: (context) => SpellListScreen("Evocação"),
                       ),
                     );
                   }),
@@ -114,7 +117,7 @@ class _HomePageState extends State<HomePage> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => QueryScreen("Abjuração"),
+                      builder: (context) => SpellListScreen("Abjuração"),
                     ),
                   );
                 },
@@ -131,7 +134,7 @@ class _HomePageState extends State<HomePage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => QueryScreen("Transmutação"),
+                        builder: (context) => SpellListScreen("Transmutação"),
                       ),
                     );
                   }),
@@ -145,7 +148,7 @@ class _HomePageState extends State<HomePage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => QueryScreen("Adivinhação"),
+                        builder: (context) => SpellListScreen("Adivinhação"),
                       ),
                     );
                   }),
@@ -161,7 +164,7 @@ class _HomePageState extends State<HomePage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => QueryScreen("Encantamento"),
+                        builder: (context) => SpellListScreen("Encantamento"),
                       ),
                     );
                   }),
@@ -175,7 +178,7 @@ class _HomePageState extends State<HomePage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => QueryScreen("Ilusão"),
+                        builder: (context) => SpellListScreen("Ilusão"),
                       ),
                     );
                   }),
