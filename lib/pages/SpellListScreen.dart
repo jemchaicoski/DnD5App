@@ -5,10 +5,19 @@ import '../services/DndService.dart';
 
 class SpellListScreen extends StatefulWidget {
   final String title;
-  const SpellListScreen(this.title);
+  final bool isDarkMode;
+
+  const SpellListScreen(this.title, this.isDarkMode);
 
   @override
   _SpellListScreenState createState() => new _SpellListScreenState();
+}
+
+Color getTextColorByTheme(bool isDarkMode){
+    if (isDarkMode){
+      return Colors.black;
+    }
+    return Colors.white;
 }
 
 class _SpellListScreenState extends State<SpellListScreen> {
@@ -67,7 +76,6 @@ class _SpellListScreenState extends State<SpellListScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
-        backgroundColor: Colors.transparent,
       ),
       body: FutureBuilder(
         future: course,
@@ -81,10 +89,10 @@ class _SpellListScreenState extends State<SpellListScreen> {
                 return ListTile(
                   title: Text(
                     snapshot.data[index].name,
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 15.0,
                       fontFamily: 'Roboto',
-                      color: Color(0xFF212121),
+                      color: getTextColorByTheme(widget.isDarkMode),
                     ),
                   ),
                   onTap: () {

@@ -1,19 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 
 class MenuButton extends StatelessWidget {
   const MenuButton(
       {required this.buttonText,
-      required this.buttonColor,
       required this.onTap,
-      Key? key})
+      Key? key, this.isDarkMode})
       : super(key: key);
 
   final String buttonText;
   final VoidCallback onTap;
-  final Color buttonColor;
+  final isDarkMode;
+
+  Color getBoxColorByTheme(bool isDarkMode){
+    if (isDarkMode){
+      return Colors.blueGrey;
+    }
+    return Colors.red;
+  }
 
   @override
   Widget build(BuildContext context) {
+
     const contentStyle = TextStyle(
       color: Colors.white,
       fontSize: 18,
@@ -24,7 +32,7 @@ class MenuButton extends StatelessWidget {
       height: 100,
       width: 150,
       decoration: BoxDecoration(
-        color: buttonColor,
+        color: getBoxColorByTheme(!isDarkMode),
         borderRadius: BorderRadius.circular(25),
       ),
       child: Material(

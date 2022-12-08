@@ -30,9 +30,7 @@ class _SpellInformationScreenState extends State<SpellInformationScreen> {
           //print(snapshot.data);
           if (snapshot.data == null) {
             return Scaffold(
-              appBar: AppBar(
-                backgroundColor: Colors.transparent,
-              ),
+              appBar: AppBar(),
               body: Container(
                 child: const Center(
                   child: Text("Loading..."),
