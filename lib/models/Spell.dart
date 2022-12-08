@@ -90,8 +90,7 @@ class Spell {
   }
 
   String getRange(){
-    double number = double.parse(range!.replaceAll(RegExp("[a-zA-Z:\s]"), "").toString());
-    return (number / 3.281).round().toString() + " Metros";
+   return range!;
   }
 
   String getComponents() {
