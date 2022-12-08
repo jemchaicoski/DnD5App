@@ -90,6 +90,9 @@ class Spell {
   }
 
   String getRange(){
+    if(range == "Touch"){
+      return "Toque";
+    }
    return range!;
   }
 
